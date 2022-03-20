@@ -12,12 +12,12 @@ in  pkgs.mkShell{
 
     ];
     shellHook = ''
-      echo "Hello you are running your app in a ${builtins.currentSystem} and the version is "
-        ${mygoapp}
+      echo "Hello you are running your app in a ${builtins.currentSystem} and the version is ${mygoapp.version}"
         export DB_USERNAME=postgres
         export DB_PASSWORD=postgres
         export DB_TABLE=postgres
         export DB_PORT=5432
         export DB_HOST=localhost
+        ${mygoapp}/bin/server &
     '';
 }
